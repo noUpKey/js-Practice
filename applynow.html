@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Apply Now | Job Website</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Apply Now</h1>
+      <form>
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" required>
+        <label for="resume">Resume</label>
+        <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" required>
+        <label for="cover-letter">Cover Letter</label>
+        <textarea id="cover-letter" name="cover-letter" rows="5" required></textarea>
+        <button type="submit">Submit Application</button>
+      </form>
+    </div>
+    
+  </body>
+</html>
+<script>
+    const form = document.querySelector('form');
+const nameInput = document.querySelector('#name');
+const emailInput = document.querySelector('#email');
+const phoneInput = document.querySelector('#phone');
+const resumeInput = document.querySelector('#resume');
+const coverLetterInput = document.querySelector('#cover-letter');
+
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  
+  // using AJAX or fetch()
+  alert('Form submitted!');
+});
+</script>

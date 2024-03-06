@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Your Wishlist</title>
+    <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="wishlist.css">
+    <link rel="stylesheet" href="vw_navbar.css">
+</head>
+<body>
+    <div class="nav_cont_vw">
+        <a href="main.html"><div class="nav_img_vw">
+            <img src="/img/LOGO.PNG" alt="">
+        </div></a>
+        <div class="div2_vw">
+            <a href="#">Job</a>
+            <a href="#">Companies</a>
+            <a href="#">Services</a>
+
+        </div>
+        <div class="div3_vw">
+            <button id="nav_btn1_vw">Login</button>
+            <button id="nav_btn2_vw">Register</button>
+        </div>
+    </div>
+<div id="vw_div_wishlist"></div>
+    <div class="img_container">
+        <img src="https://img.freepik.com/premium-vector/vector-design-online-job-application_362714-690.jpg?w=2000" alt="">
+    </div>
+    <div class="wishList_item   animate__animated animate__fadeInRight ">
+
+    </div>
+    <div id="line"></div>
+</body>
+</html>
+<script>
+    function getData(){
+        let data = JSON.parse(localStorage.getItem("wishList"))||[];
+        append(data);
+    }
+
+    function append(data){
+    let divv = document.querySelector(".wishList_item");
+    divv.innerHTML=null;
+  
+data.forEach((ele,i)=> {
+    
+    let cont1 = document.createElement("div")
+    cont1.className="container3_vw";
+    cont1.setAttribute("id", "container3_vw")
+
+    let h3 = document.createElement("h3")
+    h3.innerText="Jobs related to search ...";
+    let cont2 = document.createElement("div");
+    cont2.className="cont2_1_vw";
+    let cont3 = document.createElement("div");
+    cont3.className="cont2_1_1_vw";
+    let cont4 = document.createElement("div");
+    cont4.className="cont2_1_2";
+    let imgg = document.createElement("img");
+    imgg.src=ele.img;
+
+    let cont5 = document.createElement("div");
+    cont5.className="cont2_1-1";
+    let p1 = document.createElement("p");
+    p1.setAttribute("id","jobPost")
+    p1.innerText=ele.post
+    let p2 = document.createElement("p");
+    p2.setAttribute("id", "jobCompany")
+    p2.innerText=ele.company
+
+    let span1 = document.createElement("span");
+    span1.setAttribute("id","jobExp");
+    span1.innerText="Experiance : "+ele.experiance;
+
+    let span2 = document.createElement("span")
+    span2.setAttribute("id", "jobLocation");
+    span2.innerText="Location : " +ele.location;
+
+    let p3 = document.createElement("p");
+    p3.setAttribute("id","job_desc")
+    p3.innerText="Desc :"+ele.description;
+
+    let p4 = document.createElement("p");
+    p4.setAttribute("id","desc2");
+    p4.innerText="Freshers can also apply but their skill can be compite at industry ..."
+
+    let cont6 = document.createElement("div");
+    cont6.className="cont_2_1_1";
+
+    let btn2 = document.createElement("button");
+    btn2.setAttribute("id","p22");
+    btn2.innerText="Apply for this JOB !! ";
+
+    let btn1 = document.createElement("button");
+    btn1.className="remove_btn";
+    btn1.innerText="Remove from wishlist";
+    btn1.addEventListener("click",()=>{
+
+        removeCard(ele,i)
+    })
+
+    cont4.append(imgg)
+    cont5.append(p2,p1)
+    cont3.append(cont4,cont5)
+    cont6.append(btn1,btn2)
+    cont2.append(cont3,span1,span2,p3,p4,cont6)
+    cont1.append(h3,cont2)
+    divv.append(cont1)
+
+
+});
+}
+getData();
+
+function removeCard(ele ,i){
+    console.log(ele ,i);
+}
+
+</script>
